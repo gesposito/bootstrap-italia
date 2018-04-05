@@ -1,4 +1,6 @@
 .dropdown-menu {
+  box-shadow: 0 0 2rem rgba(0,0,0,.15);
+  border: 0;
   &.full-width {
     width: 100%;
     .dropdown-item {
@@ -11,5 +13,35 @@
       }
     }
   }
+}
+.dropdown-header {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: .5rem 24px;
+}
+.dropdown-item {
+  padding: 5px 24px;
+  height: 36px;
+  font-size: 16px;
+}
+.dropdown-toggle {
+  box-shadow: none;
+  padding: 12px 16px 12px 6px;
+  color: $primary;
+}
+.dropdown-toggle::after {
+  display: inline-block;
+  content: '\e818';
+  width: 0;
+  height: 0;
+  margin: 0 0.5em;
+  font-family: "italia-icon-font";
+  font-style: normal;
+  font-weight: normal;
+  border: none;
+  vertical-align: initial;
+}
+.dropdown-toggle[aria-expanded="true"]::after {
+  content: '\e810';
 }
 
