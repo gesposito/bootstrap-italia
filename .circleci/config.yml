@@ -6,9 +6,9 @@ aliases:
 
   - &restore_cache
     keys:
-    - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
+    - v3-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
     # fallback to using the latest cache if no exact match is found
-    - v1-dependencies-
+    - v3-dependencies-
 
   - &install
     name: Ruby dependencies
@@ -22,7 +22,7 @@ aliases:
     paths:
       - vendor/bundle
       - node_modules
-    key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
+    key: v3-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
 
   - &tag_filters
     branches:
