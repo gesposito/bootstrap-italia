@@ -27,6 +27,7 @@ exclude:
   - package-lock.json
   - README.md
   - gulpfile.js
+  - vendor
 
 plugins:
   - jekyll-redirect-from
