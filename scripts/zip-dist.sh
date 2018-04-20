@@ -1,2 +1,3 @@
 mkdir ./dist/zip
-zip -r ./dist/zip/bootstrap-italia.zip ./dist
+cd ./dist
+zip -r ./zip/bootstrap-italia.zip . -x zip/\*
