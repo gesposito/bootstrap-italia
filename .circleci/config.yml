@@ -8,7 +8,7 @@ aliases:
     keys:
     - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
     # fallback to using the latest cache if no exact match is found
-    # - v1-dependencies-
+    - v1-dependencies-
 
   - &install
     name: Ruby dependencies
@@ -20,7 +20,7 @@ aliases:
 
   - &save_cache
     paths:
-      - /usr/local/bundle
+      - vendor/bundle
       - node_modules
     key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
 
@@ -34,6 +34,9 @@ defaults: &defaults
   docker:
     # specify the version you desire here
     - image: circleci/ruby:2.5.1-node
+      environment:
+        BUNDLE_PATH: vendor/bundle
+        JEKYLL_ENV: production
 
   working_directory: *working_directory
 
