@@ -33,7 +33,7 @@ aliases:
 defaults: &defaults
   docker:
     # specify the version you desire here
-    - image: circleci/ruby:2.5.1-node
+    - image: circleci/ruby:2.4.1-node
       environment:
         BUNDLE_PATH: vendor/bundle
         JEKYLL_ENV: production
