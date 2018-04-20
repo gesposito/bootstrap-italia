@@ -96,7 +96,9 @@ jobs:
 
       - run:
           name: Add GitHub Release assets
-          command: npm run upload-release-assets
+          command: |
+            sh ./scripts/zip-dist.sh
+            npm run upload-release-assets
 
 # Workflows enable multiple jobs in parallel
 workflows:
