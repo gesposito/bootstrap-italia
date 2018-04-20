@@ -1,7 +1,7 @@
 const fs = require("fs");
 const octokit = require("@octokit/rest")();
 
-const dist = process.cwd() + "/dist/";
+const dist = process.cwd() + "/dist/zip/";
 const {
   CIRCLE_PROJECT_USERNAME,
   CIRCLE_PROJECT_REPONAME,
