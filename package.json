@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-italia",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "keywords": [
     "css",
     "sass",
@@ -17,6 +17,7 @@
     "documentation-build": "bundle exec jekyll build",
     "documentation-serve": "bundle exec jekyll serve",
     "documentation-deploy-to-gh-pages": "bundle exec jekyll build --config _config.yml,_config_production.yml && gh-pages -d _gh_pages",
+    "upload-release-assets": "node scripts/github-upload-release-assets",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/italia/bootstrap-italia",
@@ -34,6 +35,7 @@
     "src/"
   ],
   "devDependencies": {
+    "@octokit/rest": "^15.2.6",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",

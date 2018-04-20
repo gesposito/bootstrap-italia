@@ -6,9 +6,9 @@ aliases:
 
   - &restore_cache
     keys:
-    - v1-dependencies-{{ checksum "Gemfile.lock" }}
+    - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
     # fallback to using the latest cache if no exact match is found
-    - v1-dependencies-
+    # - v1-dependencies-
 
   - &install
     name: Ruby dependencies
@@ -22,7 +22,7 @@ aliases:
     paths:
       - /usr/local/bundle
       - node_modules
-    key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+    key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "package.json" }}
 
   - &tag_filters
     branches:
@@ -48,6 +48,7 @@ jobs:
           name: Check versions
           command: |
             ruby --version
+            bundle --version
             node --version
             npm --version
             docker --version
@@ -76,10 +77,39 @@ jobs:
             - dist
             - _gh_pages
 
+  release-github-assets:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: .
+
+      # Restore dependencies
+      - restore_cache: *restore_cache
+      - run: *npm_install
+
+      - run:
+          name: Add GitHub Release assets
+          command: npm run upload-release-assets
+
 # Workflows enable multiple jobs in parallel
 workflows:
   version: 2
 
   deploy:
     jobs:
-      - build
+      - build:
+          # Note: The build job must also have a filters tags section, as it is a transient dependency of the deploy job.
+          filters:
+            branches:
+              ignore: gh-pages
+            tags:
+              only: /.*/
+
+      - release-github-assets:
+          requires:
+            - build
+          filters: *tag_filters
