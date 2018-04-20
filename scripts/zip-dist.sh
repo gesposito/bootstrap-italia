@@ -1,1 +1,1 @@
-zip -r dist/zip/bootstrap-italia.zip dist
+zip -r ./dist/zip/bootstrap-italia.zip ./dist
