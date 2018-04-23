@@ -65,12 +65,7 @@ jobs:
       - run:
           name: Build
           command: |
-            git config --global user.email "$GIT_AUTHOR_EMAIL"
-            git config --global user.name "$GIT_AUTHOR_NAME"
-            # package.json is updated by `github.com/zeit/release` or similar
-            npm run bump-config-yml
             npm run build
-            npm run documentation-deploy-to-gh-pages
 
       # Persist the specified paths (workspace/echo-output) into the workspace
       # for use in downstream job. Must be an absolute path, or relative path
@@ -80,9 +75,29 @@ jobs:
           root: *working_directory
           paths:
             - dist
-            - _gh_pages
 
-  release-github-assets:
+  github-update-pages:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      # Restore dependencies
+      - restore_cache: *restore_cache
+      - run: *install
+
+      - run:
+          name: Update GitHub Pages
+          command: |
+            git config --global user.email "$GIT_AUTHOR_EMAIL"
+            git config --global user.name "$GIT_AUTHOR_NAME"
+            # package.json is updated by `github.com/zeit/release` or similar
+            # here we sync _config.yml with its version
+            npm run bump-config-yml
+            npm run documentation-deploy-to-gh-pages
+
+
+  github-create-release:
     <<: *defaults
 
     steps:
@@ -97,10 +112,10 @@ jobs:
       - run: *npm_install
 
       - run:
-          name: Add GitHub Release assets
+          name: Create GitHub Release
           command: |
             sh ./scripts/zip-dist.sh
-            npm run upload-release-assets
+            npm run create-release
 
 # Workflows enable multiple jobs in parallel
 workflows:
@@ -116,7 +131,12 @@ workflows:
             tags:
               only: /.*/
 
-      - release-github-assets:
+      - github-update-pages:
+          requires:
+            - build
+          filters: *tag_filters
+
+      - github-create-release:
           requires:
             - build
           filters: *tag_filters
