@@ -19,6 +19,7 @@
     "documentation-deploy-to-gh-pages": "bundle exec jekyll build --config _config.yml,_config_production.yml && gh-pages -d _gh_pages",
     "create-release": "node scripts/github-create-release",
     "bump-config-yml": "node scripts/bump-config-yml",
+    "release-next-minor": "npx release-it minor -n --src.commit --src.push --src.tag --no-github.release --no-npm.publish",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": "https://github.com/italia/bootstrap-italia",
