@@ -96,7 +96,6 @@ jobs:
             npm run bump-config-yml
             npm run documentation-deploy-to-gh-pages
 
-
   github-create-release:
     <<: *defaults
 
