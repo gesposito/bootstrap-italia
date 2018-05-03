@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-italia",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "keywords": [
     "css",
     "sass",
@@ -19,8 +19,10 @@
     "documentation-deploy-to-gh-pages": "bundle exec jekyll build --config _config.yml,_config_production.yml && gh-pages -d _gh_pages",
     "create-release": "node scripts/github-create-release",
     "bump-config-yml": "node scripts/bump-config-yml",
-    "release-next-minor": "npm version minor -m \"Release %s\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release-minor": "npm version minor -m \"Release %s\"",
+    "preversion": "npm test",
+    "postversion": "echo \"You can now publish your tag with 'git push --follow-tags'\"",
+    "test": "echo \"No tests specified\""
   },
   "repository": "https://github.com/italia/bootstrap-italia",
   "author": "Presidenza del Consiglio dei Ministri",
