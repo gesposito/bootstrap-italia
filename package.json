@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-italia",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "keywords": [
     "css",
     "sass",
@@ -10,15 +10,13 @@
     "framework",
     "web"
   ],
-  "description":
-    "Bootstrap Italia è un tema Bootstrap 4 per la creazione di applicazioni web nel pieno rispetto delle Linee guida di design per i servizi web della PA",
+  "description": "Bootstrap Italia è un tema Bootstrap 4 per la creazione di applicazioni web nel pieno rispetto delle Linee guida di design per i servizi web della PA",
   "scripts": {
     "start": "gulp serve",
     "build": "gulp build",
     "documentation-build": "bundle exec jekyll build",
     "documentation-serve": "bundle exec jekyll serve",
-    "documentation-deploy-to-gh-pages":
-      "bundle exec jekyll build --config _config.yml,_config_production.yml && gh-pages -d _gh_pages",
+    "documentation-deploy-to-gh-pages": "bundle exec jekyll build --config _config.yml,_config_production.yml && gh-pages -d _gh_pages",
     "create-release": "node scripts/github-create-release",
     "bump-config-yml": "node scripts/bump-config-yml",
     "release-next-minor": "npm version minor -m \"Release %s\"",
@@ -30,8 +28,14 @@
   "engines": {
     "node": ">=6"
   },
-  "browserslist": ["> 1%", "last 2 versions"],
-  "files": ["dist/", "src/"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "files": [
+    "dist/",
+    "src/"
+  ],
   "devDependencies": {
     "@octokit/rest": "^15.2.6",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.0",
