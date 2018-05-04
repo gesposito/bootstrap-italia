@@ -116,6 +116,22 @@ jobs:
             sh ./scripts/zip-dist.sh
             npm run create-release
 
+  npm-publish:
+    <<: *defaults
+
+    steps:
+      - checkout
+
+      - attach_workspace:
+          # Must be absolute path or relative path from working_directory
+          at: .
+
+      - run:
+          name: NPM publish
+          command: |
+            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            npm publish
+
 # Workflows enable multiple jobs in parallel
 workflows:
   version: 2
@@ -139,3 +155,8 @@ workflows:
           requires:
             - build
           filters: *tag_filters
+
+      # - npm-publish:
+      #     requires:
+      #       - build
+      #     filters: *tag_filters

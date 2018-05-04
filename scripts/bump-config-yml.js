@@ -3,7 +3,7 @@ const fs = require("fs");
 
 const path = "_config.yml";
 const encoding = "utf8";
-// package.json is updated by `github.com/zeit/release` or similar
+// package.json is updated by `npm version major/minor/patch` or similar
 const version = require("../package.json").version;
 
 // Get document, or throw exception on error
@@ -13,4 +13,5 @@ try {
   fs.writeFileSync(path, yaml.safeDump(doc), encoding);
 } catch (e) {
   console.error(e);
+  process.exit(1);
 }
