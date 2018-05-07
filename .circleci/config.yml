@@ -75,6 +75,7 @@ jobs:
           root: *working_directory
           paths:
             - dist
+            - docs/assets/dist
 
   github-update-pages:
     <<: *defaults
@@ -94,7 +95,6 @@ jobs:
             # package.json is updated by `github.com/zeit/release` or similar
             # here we sync _config.yml with its version
             npm run bump-config-yml
-            npm run documentation-build
             npm run documentation-deploy-to-gh-pages
 
   github-create-release:
