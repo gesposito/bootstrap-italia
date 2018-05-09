@@ -1,7 +1,7 @@
 const fs = require("fs");
 const octokit = require("@octokit/rest")();
 
-const { getChangelog } = require("./retrieve-changelog");
+const { getChangelog } = require("./changelog");
 
 const dist = process.cwd() + "/dist/zip/";
 const {
