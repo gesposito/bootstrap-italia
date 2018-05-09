@@ -89,7 +89,7 @@ jobs:
             # Details can be found here:
             # https://circleci.com/docs/1.0/adding-read-write-deployment-key/ (no 2.0 docs yet)
             # https://circleci.com/docs/2.0/configuration-reference/#add_ssh_keys
-            - "db:73:ff:52:7b:1f:26:07:40:c7:c9:e9:9d:5a:5c:69"
+            - "7c:c7:11:ed:45:18:50:62:c3:21:db:99:db:4e:e0:65"
 
       - checkout
 
