@@ -90,6 +90,7 @@ jobs:
             # https://circleci.com/docs/1.0/adding-read-write-deployment-key/ (no 2.0 docs yet)
             # https://circleci.com/docs/2.0/configuration-reference/#add_ssh_keys
             - "db:73:ff:52:7b:1f:26:07:40:c7:c9:e9:9d:5a:5c:69"
+
       - checkout
 
       - attach_workspace:
@@ -103,6 +104,8 @@ jobs:
       - run:
           name: Update GitHub Pages
           command: |
+            git config --global user.email "$GIT_AUTHOR_EMAIL"
+            git config --global user.name "$GIT_AUTHOR_NAME"
             npm run documentation-deploy-to-gh-pages
 
   github-create-release:
