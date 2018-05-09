@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-italia",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "keywords": [
     "css",
     "sass",
@@ -10,8 +10,7 @@
     "framework",
     "web"
   ],
-  "description":
-    "Bootstrap Italia è un tema Bootstrap 4 per la creazione di applicazioni web nel pieno rispetto delle Linee guida di design per i servizi web della PA",
+  "description": "Bootstrap Italia è un tema Bootstrap 4 per la creazione di applicazioni web nel pieno rispetto delle Linee guida di design per i servizi web della PA",
   "scripts": {
     "start": "gulp serve",
     "build": "gulp build",
@@ -33,8 +32,14 @@
   "engines": {
     "node": ">=6"
   },
-  "browserslist": ["last 2 versions", "> 1%"],
-  "files": ["dist/", "src/"],
+  "browserslist": [
+    "last 2 versions",
+    "> 1%"
+  ],
+  "files": [
+    "dist/",
+    "src/"
+  ],
   "devDependencies": {
     "@octokit/rest": "^15.2.6",
     "babel-core": "^6.26.3",
@@ -67,4 +72,3 @@
     "popper.js": "^1.14.3"
   }
 }
-
