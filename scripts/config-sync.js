@@ -6,7 +6,6 @@ const encoding = "utf8";
 // package.json is updated by `npm version major/minor/patch` or similar
 const version = require("../package.json").version;
 
-// Get document, or throw exception on error
 try {
   let doc = yaml.safeLoad(fs.readFileSync(path, encoding));
   doc.current_version = version;

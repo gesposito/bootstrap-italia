@@ -17,10 +17,12 @@
     "documentation-build": "bundle exec jekyll build",
     "documentation-serve": "bundle exec jekyll serve",
     "documentation-deploy-to-gh-pages": "bundle exec jekyll build --config _config.yml,_config_production.yml && gh-pages -d _gh_pages",
-    "create-release": "node scripts/github-create-release",
-    "bump-config-yml": "node scripts/bump-config-yml",
-    "release-minor": "npm version minor -m \"Release %s\"",
+    "release": "node scripts/release",
+    "bump-major": "npm version major -m \"Release %s\"",
+    "bump-minor": "npm version minor -m \"Release %s\"",
+    "bump-patch": "npm version patch -m \"Release %s\"",
     "preversion": "npm test",
+    "version": "node scripts/config-sync && git add _config.yml",
     "postversion": "echo \"You can now publish your tag with 'git push --follow-tags'\"",
     "test": "echo \"No tests specified\""
   },
@@ -64,7 +66,7 @@
     "js-yaml": "^3.11.0"
   },
   "dependencies": {
-    "bootstrap": "^4.1.1",
+    "bootstrap": "^4.1.0",
     "jquery": "^3.3.1",
     "pickadate": "^3.5.6",
     "popper.js": "^1.14.3"
